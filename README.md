@@ -1,6 +1,6 @@
 # fmqa
 
-A naive implementation of Factorization Machine with Quadratic Optimization Annealing (FMQA) for regression problems.
+A naive implementation of Factorization Machine with Quadratic Optimization Annealing (FMQA) for black-box optimization.
 
 This repository is intended for educational purposes and is not optimized for performance.
 
