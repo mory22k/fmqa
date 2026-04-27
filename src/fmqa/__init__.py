@@ -1,9 +1,6 @@
-from fmqa.fm import (
-    FactorizationMachineRegressor,
-)
-from fmqa.translator import fm_to_qubo
+from pathlib import Path
 
-__all__ = [
-    "FactorizationMachineRegressor",
-    "fm_to_qubo",
-]
+PROJECT_ROOT = Path(__file__).parents[2]
+
+if __name__ == "__main__":
+    print(f"Project root directory: {PROJECT_ROOT}")

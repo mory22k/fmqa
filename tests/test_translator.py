@@ -4,8 +4,8 @@ import itertools
 
 import torch
 
-from fmqa.fm import FactorizationMachineRegressor
-from fmqa.translator import fm_to_qubo
+from algo.fmqa.fm import FactorizationMachineRegressor
+from algo.fmqa.fmqa import fm_to_qubo
 
 
 def test_fm_to_qubo_matches_fm_plus_bias() -> None:
@@ -33,14 +33,15 @@ def test_fm_to_qubo_matches_fm_plus_bias() -> None:
 
     x = torch.tensor(list(itertools.product([0.0, 1.0], repeat=3)))
     fm_values = model(x)
-    qubo_values = bias + (
-        torch.triu(x[:, :, None] * x[:, None, :]) * qubo
-    ).sum(dim=(1, 2))
+    qubo_values = bias + (torch.triu(x[:, :, None] * x[:, None, :]) * qubo).sum(
+        dim=(1, 2)
+    )
 
     print("FM values:", fm_values)
     print("QUBO values:", qubo_values)
 
     assert torch.allclose(fm_values, qubo_values)
+
 
 if __name__ == "__main__":
     test_fm_to_qubo_matches_fm_plus_bias()
